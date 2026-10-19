@@ -1,0 +1,12 @@
+﻿fastapi==0.115.*
+uvicorn[standard]==0.32.*
+python-multipart==0.0.*
+pypdf==5.*
+chromadb>=1.0,<2
+sentence-transformers==3.*
+openai==1.*
+python-dotenv==1.*
+pydantic-settings==2.*
+reportlab==4.*
+pytest==8.*
+httpx==0.27.*
