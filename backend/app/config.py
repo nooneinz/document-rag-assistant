@@ -16,6 +16,11 @@ class Settings(BaseSettings):
     top_k: int = 4
     min_similarity: float = 0.30
     data_dir: Path = BASE_DIR / "data"
+    max_upload_mb: int = 10
+    # Built React app (npm run build); served by FastAPI when it exists.
+    frontend_dir: Path = BASE_DIR.parent / "frontend" / "dist"
+    # If set, PDFs in this folder are indexed on startup when the store is empty (live demo).
+    seed_dir: Path | None = None
 
 
 settings = Settings()
