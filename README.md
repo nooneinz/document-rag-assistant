@@ -1,3 +1,13 @@
+---
+title: Document RAG Assistant
+emoji: 📄
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # Document RAG Assistant | مساعد الوثائق الذكي
 
 [English](#english) · [العربية](#العربية)
@@ -89,6 +99,15 @@ python -m scripts.evaluate           # end-to-end, needs OPENAI_API_KEY
 | `CHUNK_SIZE` / `CHUNK_OVERLAP` | 800 / 150 | Chunking in characters |
 | `TOP_K` | 4 | Passages sent to the LLM |
 | `MIN_SIMILARITY` | 0.30 | Below this the system declines without calling the LLM. Tune it with your own documents. |
+
+### Live demo deployment (Docker)
+
+The `Dockerfile` builds the React app and serves it together with the API from one FastAPI server on port 7860, and indexes the PDFs in `sample_docs/` on first start so visitors can ask right away.
+
+- **Hugging Face Spaces:** create a Space with the **Docker** SDK, push this repository to it, and add `OPENAI_API_KEY` under *Settings → Variables and secrets* (as a **secret**).
+- **Any Docker host:** `docker build -t rag . && docker run -p 7860:7860 -e OPENAI_API_KEY=sk-... rag`
+
+Uploads are limited to 10 MB (`MAX_UPLOAD_MB`). Every visitor of a public demo shares the same document list and your OpenAI quota, so set a monthly usage limit in your OpenAI account.
 
 ### Limitations
 
